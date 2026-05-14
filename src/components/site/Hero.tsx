@@ -3,10 +3,9 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import heroImg from "@/assets/hero-cruise.jpg";
-import deckImg from "@/assets/deck-sunset.jpg";
-import canalImg from "@/assets/canal-mangrove.jpg";
+import img21 from "@/assets/21.jpeg";
+import img23 from "@/assets/23.jpeg";
 import tigerImg from "@/assets/wildlife-tiger.jpg";
-import diningImg from "@/assets/dining-bbq.jpg";
 
 const slides = [
   {
@@ -16,13 +15,13 @@ const slides = [
     sub: "Explore the world's largest mangrove forest aboard Bangladesh's most luxurious government-approved cruise ship.",
   },
   {
-    img: deckImg,
+    img: img21,
     eyebrow: "◆ Sundown On The Sky Deck",
     title: <>Golden hours <em className="not-italic text-gradient-gold font-normal">over</em><br />the wild delta.</>,
     sub: "Open-air sky decks, candlelit dinners and a sunset that stretches across the horizon.",
   },
   {
-    img: canalImg,
+    img: img23,
     eyebrow: "◆ Cinematic Mangrove Canals",
     title: <>Drift through <em className="not-italic text-gradient-gold font-normal">untouched</em><br />green corridors.</>,
     sub: "Glide silently through narrow tidal canals, escorted by expert naturalists and silent canoes.",
@@ -32,12 +31,6 @@ const slides = [
     eyebrow: "◆ Royal Bengal Encounters",
     title: <>Where the <em className="not-italic text-gradient-gold font-normal">tiger</em><br />still rules.</>,
     sub: "Documentary-grade wildlife expeditions across Kotka, Hiron Point and Kochikhali.",
-  },
-  {
-    img: diningImg,
-    eyebrow: "◆ Master-Chef BBQ Nights",
-    title: <>Fine dining <em className="not-italic text-gradient-gold font-normal">under</em><br />a thousand stars.</>,
-    sub: "Live charcoal grill, fresh river catch, jazz on the deck — every night an event.",
   },
 ];
 

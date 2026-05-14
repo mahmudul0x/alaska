@@ -19,6 +19,7 @@ import { Route as CabinsRouteImport } from './routes/cabins'
 import { Route as BookingRouteImport } from './routes/booking'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CabinsSlugRouteImport } from './routes/cabins.$slug'
 
 const WildlifeRoute = WildlifeRouteImport.update({
   id: '/wildlife',
@@ -70,43 +71,51 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CabinsSlugRoute = CabinsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => CabinsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/booking': typeof BookingRoute
-  '/cabins': typeof CabinsRoute
+  '/cabins': typeof CabinsRouteWithChildren
   '/contact': typeof ContactRoute
   '/cruise-experience': typeof CruiseExperienceRoute
   '/dining': typeof DiningRoute
   '/gallery': typeof GalleryRoute
   '/packages': typeof PackagesRoute
   '/wildlife': typeof WildlifeRoute
+  '/cabins/$slug': typeof CabinsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/booking': typeof BookingRoute
-  '/cabins': typeof CabinsRoute
+  '/cabins': typeof CabinsRouteWithChildren
   '/contact': typeof ContactRoute
   '/cruise-experience': typeof CruiseExperienceRoute
   '/dining': typeof DiningRoute
   '/gallery': typeof GalleryRoute
   '/packages': typeof PackagesRoute
   '/wildlife': typeof WildlifeRoute
+  '/cabins/$slug': typeof CabinsSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/booking': typeof BookingRoute
-  '/cabins': typeof CabinsRoute
+  '/cabins': typeof CabinsRouteWithChildren
   '/contact': typeof ContactRoute
   '/cruise-experience': typeof CruiseExperienceRoute
   '/dining': typeof DiningRoute
   '/gallery': typeof GalleryRoute
   '/packages': typeof PackagesRoute
   '/wildlife': typeof WildlifeRoute
+  '/cabins/$slug': typeof CabinsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -121,6 +130,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/packages'
     | '/wildlife'
+    | '/cabins/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -133,6 +143,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/packages'
     | '/wildlife'
+    | '/cabins/$slug'
   id:
     | '__root__'
     | '/'
@@ -145,13 +156,14 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/packages'
     | '/wildlife'
+    | '/cabins/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   BookingRoute: typeof BookingRoute
-  CabinsRoute: typeof CabinsRoute
+  CabinsRoute: typeof CabinsRouteWithChildren
   ContactRoute: typeof ContactRoute
   CruiseExperienceRoute: typeof CruiseExperienceRoute
   DiningRoute: typeof DiningRoute
@@ -232,14 +244,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cabins/$slug': {
+      id: '/cabins/$slug'
+      path: '/$slug'
+      fullPath: '/cabins/$slug'
+      preLoaderRoute: typeof CabinsSlugRouteImport
+      parentRoute: typeof CabinsRoute
+    }
   }
 }
+
+interface CabinsRouteChildren {
+  CabinsSlugRoute: typeof CabinsSlugRoute
+}
+
+const CabinsRouteChildren: CabinsRouteChildren = {
+  CabinsSlugRoute: CabinsSlugRoute,
+}
+
+const CabinsRouteWithChildren =
+  CabinsRoute._addFileChildren(CabinsRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   BookingRoute: BookingRoute,
-  CabinsRoute: CabinsRoute,
+  CabinsRoute: CabinsRouteWithChildren,
   ContactRoute: ContactRoute,
   CruiseExperienceRoute: CruiseExperienceRoute,
   DiningRoute: DiningRoute,

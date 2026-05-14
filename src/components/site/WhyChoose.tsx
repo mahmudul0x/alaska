@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Anchor, Shield, Wifi, Compass, Sparkles, Crown } from "lucide-react";
 import { SectionHeader } from "./SectionHeader";
+import img104 from "@/assets/104.jpeg";
 
 const features = [
   {
@@ -40,12 +41,15 @@ export function WhyChoose() {
     <section className="relative py-28 md:py-40 bg-background overflow-hidden">
       <div className="container-luxe relative">
         <div className="grid gap-16 lg:grid-cols-12">
-          <div className="lg:col-span-5 lg:sticky lg:top-32 lg:self-start">
+          <div className="lg:col-span-5 lg:sticky lg:top-32 lg:self-start space-y-8">
             <SectionHeader
               eyebrow="Why MV Alaska"
               title={<>The most refined way to discover Sundarbans.</>}
               description="A floating five-star sanctuary engineered for travellers who refuse to compromise on comfort while seeking the wild."
             />
+            <div className="relative aspect-4/3 rounded-2xl overflow-hidden shadow-luxe">
+              <img src={img104} alt="MV Alaska grand lobby" loading="lazy" className="image-zoom absolute inset-0 h-full w-full object-cover" />
+            </div>
           </div>
 
           <div className="lg:col-span-7 grid sm:grid-cols-2 gap-px bg-border">

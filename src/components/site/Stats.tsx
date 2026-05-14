@@ -56,16 +56,16 @@ const stats = [
 export function Stats() {
   return (
     <section className="relative py-0 overflow-hidden">
-      {/* Dark ocean background with subtle texture */}
-      <div className="absolute inset-0 gradient-ocean" />
+      {/* Light cream background */}
+      <div className="absolute inset-0 bg-background" />
 
       {/* Decorative gold lines */}
-      <div className="absolute top-0 inset-x-0 gold-rule opacity-60" />
-      <div className="absolute bottom-0 inset-x-0 gold-rule opacity-60" />
+      <div className="absolute top-0 inset-x-0 gold-rule opacity-40" />
+      <div className="absolute bottom-0 inset-x-0 gold-rule opacity-40" />
 
       {/* Ambient glow orbs */}
-      <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-gold/5 blur-[120px] pointer-events-none" />
-      <div className="absolute top-1/2 right-1/4 translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-teal/10 blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-gold/8 blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-ocean/5 blur-[120px] pointer-events-none" />
 
       <div className="relative container-luxe py-24 md:py-32">
 
@@ -82,7 +82,7 @@ export function Stats() {
             <span className="eyebrow text-gold-soft tracking-[0.3em]">By the numbers</span>
             <span className="h-px w-12 bg-gradient-to-l from-transparent to-gold" />
           </div>
-          <h2 className="font-display text-3xl md:text-4xl font-light text-background">
+          <h2 className="font-display text-3xl md:text-4xl font-light text-ocean">
             A Legacy of <em className="not-italic text-gradient-gold">Excellence</em>
           </h2>
         </motion.div>
@@ -96,7 +96,7 @@ export function Stats() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.65, delay: i * 0.1 }}
-              className="group relative flex flex-col items-center text-center px-8 py-12 bg-ocean/60 hover:bg-midnight/80 transition-colors duration-500 cursor-default"
+              className="group relative flex flex-col items-center text-center px-8 py-12 bg-background hover:bg-sand/60 transition-colors duration-500 cursor-default border border-border/60"
             >
               {/* Icon */}
               <div className="mb-6 size-14 rounded-2xl grid place-items-center border border-gold/20 bg-gold/5 group-hover:border-gold/50 group-hover:bg-gold/10 transition-all duration-500">
@@ -112,10 +112,10 @@ export function Stats() {
               <div className="my-4 w-10 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
 
               {/* Label */}
-              <div className="eyebrow text-background/90 tracking-[0.25em] text-[0.68rem]">{s.label}</div>
+              <div className="eyebrow text-ocean/80 tracking-[0.25em] text-[0.68rem]">{s.label}</div>
 
               {/* Description */}
-              <p className="mt-3 text-xs text-background/45 leading-relaxed max-w-[180px] group-hover:text-background/65 transition-colors duration-500">
+              <p className="mt-3 text-xs text-muted-foreground leading-relaxed max-w-45 group-hover:text-foreground/70 transition-colors duration-500">
                 {s.desc}
               </p>
 

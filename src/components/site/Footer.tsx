@@ -20,10 +20,16 @@ export function Footer() {
             government-approved Sundarbans cruise — where adventure meets elegance.
           </p>
           <div className="mt-6 flex gap-3">
-            {[Instagram, Facebook, Youtube].map((Icon, i) => (
+            {[
+              { Icon: Facebook, href: "https://www.facebook.com/profile.php?id=100093297079777" },
+              { Icon: Instagram, href: "#" },
+              { Icon: Youtube, href: "#" },
+            ].map(({ Icon, href }, i) => (
               <a
                 key={i}
-                href="#"
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="size-10 rounded-full border border-white/15 grid place-items-center hover:border-gold hover:text-gold transition-colors"
               >
                 <Icon className="size-4" />

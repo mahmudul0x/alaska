@@ -9,6 +9,9 @@ import tiger from "@/assets/wildlife-tiger.jpg";
 import deer from "@/assets/wildlife-deer.jpg";
 import bird from "@/assets/wildlife-bird.jpg";
 import canal from "@/assets/canal-mangrove.jpg";
+import img104 from "@/assets/104.jpeg";
+import img105 from "@/assets/105.jpeg";
+import img108 from "@/assets/108.jpeg";
 
 export const Route = createFileRoute("/gallery")({
   component: Gallery,
@@ -21,15 +24,17 @@ export const Route = createFileRoute("/gallery")({
 });
 
 const images = [
-  { src: hero, span: "md:col-span-2 md:row-span-2" },
-  { src: cabin, span: "" },
-  { src: tiger, span: "" },
-  { src: deck, span: "md:col-span-2" },
-  { src: dining, span: "" },
-  { src: deer, span: "" },
-  { src: canal, span: "md:col-span-2 md:row-span-2" },
-  { src: bird, span: "" },
-  { src: hero, span: "" },
+  { src: hero,    span: "md:col-span-2 md:row-span-2" },
+  { src: cabin,   span: "" },
+  { src: tiger,   span: "" },
+  { src: img104,  span: "md:col-span-2" },
+  { src: dining,  span: "" },
+  { src: deer,    span: "" },
+  { src: canal,   span: "md:col-span-2 md:row-span-2" },
+  { src: img105,  span: "" },
+  { src: img108,  span: "" },
+  { src: deck,    span: "md:col-span-2" },
+  { src: bird,    span: "" },
 ];
 
 function Gallery() {
