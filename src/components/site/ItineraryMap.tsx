@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
-import { useNavigate, useSearch } from "@tanstack/react-router";
+import { useRef, useState } from "react";
 import {
   Anchor, Compass, Sunrise, Trees, Waves, Camera, Bird, MapPin,
   Utensils, Footprints, Link2, Check,
@@ -66,39 +65,15 @@ export function ItineraryMap({
 }: {
   stops: Stop[];
   title?: string;
-  /** Unique URL search-param key so multiple maps on one page don't collide */
   paramKey?: string;
 }) {
-  const navigate = useNavigate();
-  const search = useSearch({ strict: false }) as Record<string, unknown>;
-  const urlId = typeof search?.[paramKey] === "string" ? (search[paramKey] as string) : undefined;
-  const initial = Math.max(0, stops.findIndex((s) => s.id === urlId));
-  const [active, setActive] = useState(initial === -1 ? 0 : initial);
+  const [active, setActive] = useState(0);
   const [hover, setHover] = useState<number | null>(null);
   const [copied, setCopied] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const didScrollRef = useRef(false);
-
-  // Sync state when URL changes (e.g. shared link, browser nav)
-  useEffect(() => {
-    if (!urlId) return;
-    const idx = stops.findIndex((s) => s.id === urlId);
-    if (idx !== -1) {
-      setActive(idx);
-      if (!didScrollRef.current && containerRef.current) {
-        didScrollRef.current = true;
-        // Defer to allow paint
-        requestAnimationFrame(() => {
-          containerRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
-        });
-      }
-    }
-  }, [urlId, stops]);
 
   const select = (i: number) => {
     setActive(i);
-    const next: Record<string, unknown> = { ...search, [paramKey]: stops[i].id };
-    navigate({ to: ".", search: next, replace: true } as never);
   };
 
   const stop = stops[active];
@@ -116,10 +91,7 @@ export function ItineraryMap({
 
   const copyLink = async () => {
     try {
-      const url = new URL(window.location.href);
-      url.searchParams.set(paramKey, stop.id);
-      url.hash = "";
-      await navigator.clipboard.writeText(url.toString());
+      await navigator.clipboard.writeText(window.location.href);
       setCopied(true);
       setTimeout(() => setCopied(false), 1800);
     } catch {
@@ -132,7 +104,7 @@ export function ItineraryMap({
   return (
     <div ref={containerRef} className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-stretch scroll-mt-24">
       {/* Map canvas */}
-      <div className="lg:col-span-7 relative rounded-3xl overflow-hidden bg-gradient-to-br from-mangrove/15 via-background to-teal/10 border border-border shadow-luxe">
+      <div className="lg:col-span-7 relative rounded-3xl overflow-hidden bg-linear-to-br from-mangrove/15 via-background to-teal/10 border border-border shadow-luxe">
         {/* paper texture */}
         <div className="absolute inset-0 opacity-[0.06] pointer-events-none" style={{
           backgroundImage: "radial-gradient(circle at 1px 1px, var(--ocean) 1px, transparent 0)",
