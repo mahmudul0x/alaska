@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const links = [
   { to: "/", label: "Home" },
@@ -40,12 +41,10 @@ export function Navbar() {
       >
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="size-10 rounded-full gradient-gold grid place-items-center shadow-gold">
-              <span className="font-display text-ocean text-lg font-bold">A</span>
-            </div>
-            <div className={`leading-none ${scrolled ? "text-background" : "text-background"}`}>
-              <div className="font-display text-lg tracking-wide">MV ALASKA</div>
-              <div className="eyebrow text-gold-soft text-[10px] mt-0.5">Cruise Ship</div>
+            <img src={logo} alt="MV Alaska Cruise Ship" className="h-14 w-auto object-contain" />
+            <div className="leading-none">
+              <div className="font-display text-xl tracking-widest text-background font-bold">M.V. ALASKA</div>
+              <div className="eyebrow text-gold-soft text-[10px] mt-0.5 tracking-[0.2em]">Cruise Ship</div>
             </div>
           </Link>
 

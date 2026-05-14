@@ -1,7 +1,7 @@
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ChevronDown, Play, Calendar, Users, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import heroImg from "@/assets/hero-cruise.jpg";
 import deckImg from "@/assets/deck-sunset.jpg";
 import canalImg from "@/assets/canal-mangrove.jpg";
@@ -97,7 +97,7 @@ export function Hero() {
       {/* Content */}
       <motion.div
         style={{ opacity }}
-        className="relative z-10 h-full container-luxe flex flex-col justify-end pb-32 md:pb-40 pt-32"
+        className="relative z-10 h-full container-luxe flex flex-col justify-center items-center text-center pt-16 -translate-y-16"
       >
         <AnimatePresence mode="wait">
           <motion.div
@@ -108,10 +108,10 @@ export function Hero() {
             transition={{ duration: 0.8 }}
           >
             <div className="eyebrow text-gold-soft mb-6">{slide.eyebrow}</div>
-            <h1 className="font-display text-background text-[clamp(2.5rem,7.5vw,7rem)] leading-[0.95] font-light max-w-5xl tracking-tight">
+            <h1 className="font-display text-background text-[clamp(2.5rem,7.5vw,7rem)] leading-[0.95] font-light tracking-tight">
               {slide.title}
             </h1>
-            <p className="mt-8 max-w-xl text-background/85 text-base md:text-lg leading-relaxed">
+            <p className="mt-8 max-w-xl mx-auto text-background/85 text-base md:text-lg leading-relaxed">
               {slide.sub}
             </p>
           </motion.div>
@@ -121,7 +121,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.2 }}
-          className="mt-10 flex flex-wrap gap-4"
+          className="mt-10 flex flex-wrap gap-4 justify-center"
         >
           <Link
             to="/booking"
@@ -135,12 +135,6 @@ export function Hero() {
           >
             Explore Packages
           </Link>
-          <button className="px-6 py-4 rounded-full glass text-background text-xs uppercase tracking-[0.2em] font-medium flex items-center gap-3 hover:text-gold transition-colors">
-            <span className="size-8 rounded-full gradient-gold grid place-items-center">
-              <Play className="size-3 text-ocean fill-ocean ml-0.5" />
-            </span>
-            Watch Experience
-          </button>
         </motion.div>
       </motion.div>
 
@@ -181,40 +175,6 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Floating booking card */}
-      <motion.div
-        initial={{ opacity: 0, y: 60 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 w-[min(1100px,92vw)]"
-      >
-        <div className="glass-dark rounded-2xl p-2 relative">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 rounded-xl overflow-hidden">
-            {[
-              { icon: Calendar, label: "Departure", value: "Select date" },
-              { icon: Calendar, label: "Return", value: "Select date" },
-              { icon: Users, label: "Guests", value: "2 Adults" },
-              { icon: MapPin, label: "Route", value: "Khulna — Sundarbans" },
-            ].map((f) => (
-              <div
-                key={f.label}
-                className="bg-ocean/40 px-5 py-4 hover:bg-ocean/60 transition-colors cursor-pointer"
-              >
-                <div className="flex items-center gap-2 text-gold-soft eyebrow text-[9px]">
-                  <f.icon className="size-3" /> {f.label}
-                </div>
-                <div className="mt-1 text-background text-sm">{f.value}</div>
-              </div>
-            ))}
-          </div>
-          <Link
-            to="/booking"
-            className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 px-6 py-3 rounded-xl gradient-gold text-ocean text-xs uppercase tracking-[0.18em] font-semibold shadow-gold"
-          >
-            Check Availability
-          </Link>
-        </div>
-      </motion.div>
 
       <motion.div
         initial={{ opacity: 0 }}

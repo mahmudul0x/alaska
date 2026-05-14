@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Phone, Mail, MapPin, Instagram, Facebook, Youtube } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 export function Footer() {
   return (
@@ -7,13 +8,11 @@ export function Footer() {
       <div className="gold-rule" />
       <div className="container-luxe py-20 grid gap-14 lg:grid-cols-12">
         <div className="lg:col-span-4">
-          <div className="flex items-center gap-3">
-            <div className="size-12 rounded-full gradient-gold grid place-items-center shadow-gold">
-              <span className="font-display text-ocean text-xl font-bold">A</span>
-            </div>
-            <div>
-              <div className="font-display text-2xl tracking-wide">MV ALASKA</div>
-              <div className="eyebrow text-gold-soft text-[10px]">Cruise Ship</div>
+          <div className="flex items-center gap-4">
+            <img src={logo} alt="MV Alaska Cruise Ship" className="h-20 w-auto object-contain" />
+            <div className="leading-none">
+              <div className="font-display text-3xl tracking-widest font-bold">M.V. ALASKA</div>
+              <div className="eyebrow text-gold-soft text-[10px] mt-1 tracking-[0.2em]">Cruise Ship</div>
             </div>
           </div>
           <p className="mt-6 text-sm text-background/65 leading-relaxed max-w-sm">
